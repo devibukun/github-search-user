@@ -1,0 +1,110 @@
+@import url('https"//fonts.googleapis.com/css2?family=poppins:wght@100;300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #1a2538;
+    color: #fff;
+    font-family: 'Poppins',sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   margin: 0;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   width: 100%;
+    padding: 40px 20%;
+}
+.user-form{
+    width: 95%;
+    max-width: 700px;
+}
+.user-form input{
+    display: block;
+    /* background-color: #637083; */
+    background-color: #293039;
+    box-shadow: 0px 0px 10px #455868,0px 0px 20px #2f4454 ;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 100%;
+}
+.user-form input:focus{
+    outline: none;
+}
+.user-form input::placeholder{
+    color: white;
+}
+.card{
+    max-width: 700px;
+    background-color: #293039;
+    box-shadow: 0px 0px 10px #455868,0px 0px 20px #2f4454 ;
+    border-radius: 15px;
+    padding: 3rem;
+    margin: 0 1.5rem;
+    display: flex;
+}
+.avatar{
+    border-radius: 10%;
+    border: 4px solid #1a2538;
+    height: 150px;
+    width: 150px;
+}
+.user-info{
+    color: #fff;
+    margin-left: 2rem;
+}
+.user-info h2{
+    margin-top: 0;
+   
+}
+.user-info ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    max-width: 400;
+}
+.user-info ul li {
+    display: flex;
+    align-items: center;
+}
+.user-info ul li strong{
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+.repo{
+    text-decoration: none;
+    color: #fff;
+   background-color:#1a2538;
+   font-size: 0.7rem;
+   padding: 0.25rem 0.5rem;
+   margin-right: 0.5rem;
+   margin-bottom: 0.5rem;
+   display: inline-block;
+}
+
+@media (max-width: 500px){
+    .card{
+        flex-direction:column ;
+        align-items: center;
+    }
+    .user-form{
+        max-width: 400;
+    }
+    .user-info{
+        margin-left: 0;
+    }
+}
