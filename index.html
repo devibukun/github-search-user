@@ -6,19 +6,53 @@
     <title>GITHUB SEARCH USERS</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="style.css" rel="stylesheet">
-   
-</head>
+   </head>
 <body>
-   <div class="heading">
-        <h4>devfinder</h4>
-        <i class='bx bxs-bulb'>Light</i>
-     </div>
+   
+<!-- GITHUB USER SEARCH API -->
+<div class="container">
+    <div class="heading">
+                <h4>devfinder</h4>
+                <button id="mode-toggle"><i class='bx bxs-bulb'></i></button>
+    </div>
+             <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search GitHub Username...">
+                    <button id="search-btn">Search</button>
+             </div>
 
-     <form action="#" class="user-form" id="form">
-        <input type="text" placeholder="Search GitHub Username..." id="search">
-     </form>
-     
-<main id="main"></main>
+    <div class="profile-card">
+        <div class="profile-header">
+            <img id="avatar" src="" alt="">
+            <h2 id="username"></h2>
+            <p id="joined-date"></p>
+    </div>
+   
+    <div class="profile-info">
+        <p id="bio"></p>
+    <div class="stats">
+    <div class="repos">
+            <h3>Repos</h3>
+            <p id="repo-count"></p>
+    </div>
+    
+    <div class="followers">
+        <h3>Followers</h3>
+        <p id="followers-count"></p>
+    </div>
+
+    <div class="following">
+        <h3>Following</h3>
+        <p id="following-count"></p>
+    </div>
+    </div>
+    <div class="links">
+         <p id="location"></p>
+         <a id="github-link" href="#" target="_blank"></a>
+    </div>
+    </div>
+</div>
+</div>
+
     <script src="script.js"></script>
 </body>
 </html>
