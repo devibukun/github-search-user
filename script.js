@@ -1,72 +1,68 @@
-const APIURL = "https://api.github.com/users/";
-const form = document.getElementById("form");
-const main = document.getElementById("main");
-const search = document.getElementById("search");
+document.getElementById("search-btn").addEventListener('click', getUser);
 
-const createUserCard = (user) =>{
-   const cardHTML = `
-    <div class="card">
-       <div>
-            <img src="${user.avatar_url}" class="avatar" alt="${user.name}">
-        </div>
-        <div class="user-info">
-            <h2>${user.name}</h2>
-            <p>${user.bio}</p>
-        <ul>
-                <li>${user.followers}<strong>Followers</strong></li>
-                <li>${user.following}<strong>Following</strong></li>
-                <li>${user.public_repos}<strong>Pepositories</strong></li>
-                </ul>
-                <div class="repo" id="repos">domdida</div>
-            </div>
-</div>
-    `;
-    main.innerHTML = cardHTML;
-};
-const addReposToCard = (repos) => {
-    const reposElement = document.getElementById("repos");
-    repos.slice(0,5).forEach((repo) =>{
-        const repoElement = document.createElement("a");
-        repoElement.classList.add("repo");
-        repoElement.href = repo.html_url;
-        repoElement.target = "_blank";
-        repoElement.innerText = repo.name;
-        reposElement.appendChild(repoElement);
-    });
-};
-     const getRepos = async (username)=> {
-        try{
-            const {data} = await axios (APIURL + username + "/repos?sort=created");
-            addReposToCard(data);
-        }catch(error){
-           createErrorCard("Problem Fetching Repos");
+function getUser(){
+    const username = document.getElementById('search-input').value
+
+    if(!username) return;
+    const url = `https://api.github.com/users/${username}`;
+    fetch(url)
+    .then(response => response.json())
+    .then(data =>{
+        document.getElementById('avatar').src = data.avatar_url;
+        document.getElementById('username').textContent = data.name || data.login;
+        document.getElementById('joined-date').textContent = `Joined ${new Date(data.created_at).toDateString()}`;
+        document.getElementById('bio').textContent = data.bio || `This user has no bio`;
+        document.getElementById('repo-count').textContent = data.public_repos;
+        document.getElementById('followers-count').textContent = data.followers;
+        document.getElementById('following-count').textContent = data.following;
+        document.getElementById('location').textContent = data.location || `Location Not Found`;
+        document.getElementById('github-link').textContent = data.blog || `Link not found`;
+        document.getElementById('github-link').textContent = data.blog || `#`;
+     })
+     .catch(error =>
+        console.error(`Error fetching the GitHub profile`));
+}
+const toggleButton = document.getElementById('mode-toggle')
+toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        if(document.body.classList.contains('light-mode')){
+            toggleButton.textContent = 'Light'
+        }else{
+            toggleButton.textContent = 'Dark'
         }
-     }
-          const createErrorCard = (message) =>{
-    const cardHTML= `<div class = "card"><h1>${message}</h1></div>`;
-    main.innerHTML = cardHTML;
-}
-const getUser = async(username) => {
-    try{
-const {data}= await axios(APIURL + username);
-createUserCard(data);
-getRepos(username);
-    }catch(error){
-        if (error.response.status === 400)
-createErrorCard("xxccNo Person With This Username")
-    }
-}
+    });
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const user = search.value;
-    if (user){
-        getUser(user);
-        search.value = "";
-    }
-});
-// form.addEventListener("submit", (e) => {
-//      e.preventDefault();
-//      const search = document.getElementById("search").value
-// fetch
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
