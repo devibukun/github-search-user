@@ -1,3 +1,4 @@
+const toggleButton = document.getElementById('themeToggle')
 document.getElementById("search-btn").addEventListener('click', getUser);
 
 function getUser(){
@@ -22,17 +23,34 @@ function getUser(){
      .catch(error =>
         console.error(`Error fetching the GitHub profile`));
 }
-const toggleButton = document.getElementById('mode-toggle')
-toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        if(document.body.classList.contains('light-mode')){
-            toggleButton.textContent = 'Light'
-        }else{
-            toggleButton.textContent = 'Dark'
-        }
-    });
+// const toggleButton = document.getElementById('mode-toggle')
+// toggleButton.addEventListener('click', () => {
+//         document.body.classList.toggle('light-mode');
+//         if(document.body.classList.contains('light-mode')){
+//             toggleButton.textContent = 'Light'
+//         }else{
+//             toggleButton.textContent = 'Dark'
+//         }
+//     });
 
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+if (prefersDarkScheme){
+    document.body.classList.add('dark-mode');
+}else{
+    document.body.classList.add('light-mode');
+}
 
+toggleButton.addEventListener('click', function(){ 
+    if(document.body.classList.contains('dark-mode')){
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        themeText.textContent = 'Light';
+    }else{
+        document.body.classList.remove('light-mode')
+            document.body.classList.add('dark-mode');
+            themeText.textContent = 'Dark';
+    }
+});
 
 
 
